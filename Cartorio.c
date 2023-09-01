@@ -148,6 +148,7 @@ int main()                                                                      
 		printf ("\t1 - Registrar nomes\n");							// 	Menu: Registrar nomes
 		printf ("\t2 - Consultar nomes\n");							// 	Menu: Consulta nomes
 		printf ("\t3 - Deletar nomes\n\n");							// 	Menu: Deletar nomes
+		printf ("\t4 - Sair do sistema\n\n");							//	Menu: Sair do sistema
 		printf ("Opção: \n\n");									// Fim do menu
 
 		scanf ("%d", &opcao);									// Armazenamendo a escolha
@@ -159,18 +160,22 @@ int main()                                                                      
 		
 			{
 				
-			case 1:										// CHamada de função: Registro
+			case 1:										// Chamada de função: Registro
 			registro();															
 			break;
 			
-			case 2:										// CHamada de função: Consulta
+			case 2:										// Chamada de função: Consulta
 			consulta();
 			break;
 			
-			case 3:										// CHamada de função: Deletar
+			case 3:										// Chamada de função: Deletar
 			deletar();
 			break;
-			
+
+			case 4:										// Chamada de função: Sair do sistema
+			printf ("Obrigado por utilizar o sistema!\n");
+			return 0;
+			break;
 			
 			default:									// Chamada de função: Erro
 			printf ("Essa opção não está disponivel!\n");
