@@ -18,7 +18,7 @@ int registro()												// int: responsável por cadastrar os usuários no sis
 	printf ("Digite o CPF a ser cadastrado: ");							// Coletando informação do usuário: CPF
 	scanf ("%s", cpf);										// %s refere-se a string
 	
-	strcpy (arquivo, cpf);										// Responsável por copiar os valores das strings: char cpf em char arquivo
+	strcpy (arquivo, cpf);										// Função de cópia de valores entre arquivo e cpf
 	
 	FILE *file;											// Abre o arquivo
 	file = fopen (arquivo, "w");									// Escreve no arquivo
@@ -133,57 +133,76 @@ int main()                                                                      
 													// Variaveis: inicio
 	int opcao = 0;											// 	int: opcao :  switch
 	int laco = 1;											// 	int: laco :  for
+	int comparacao;											//	int: comparacao: if
 													// Variaveis: fim
-	
-	for ( laco = 1 ; laco = 1 ;)									// for: para repetição do menu: inicio
-	
-		{																		
-	
-		system ("cls");										// Comando para limpar a tela
+													
+													// Strings: inicio
+	char senhadigitada [] = "a" ;									//	string: senhadigitada: strcmp
+													// Strings: fim
 		
-		setlocale (LC_ALL, "Portuguese");							// Seleção de linguagem
-	
-		printf ("###  Cartório da EBAC  ###\n\n");						// Apresentação
-		printf ("Escolha a opção desejada do menu: \n\n");					// Início do menu
-		printf ("\t1 - Registrar nomes\n");							// 	Menu: Registrar nomes
-		printf ("\t2 - Consultar nomes\n");							// 	Menu: Consulta nomes
-		printf ("\t3 - Deletar nomes\n\n");							// 	Menu: Deletar nomes
-		printf ("\t4 - Sair do sistema\n\n");							//	Menu: Sair do sistema
-		printf ("Opção: \n\n");									// Fim do menu
+	printf ("###  Cartório da EBAC  ###\n\n");							// Apresentação	
+	printf ("Login de administrador!\n\nDigite sua senha: ");					// Menu: coleta de senha
+	scanf ("%s", senhadigitada);									// Coleta da senha
 
-		scanf ("%d", &opcao);									// Armazenamendo a escolha
-	
-		system ("cls");										// Comando para limpar a tela
-
-
-		switch (opcao)										// switch: Inicio da seleção
+	comparacao = strcmp ( senhadigitada, "admin" );							// Função de comparação de valores entre senhadigitada e "admin": if
 		
-			{
+	if ( comparacao == 0 )										// if: confirmação de senha: inicio
+
+		{
+		system ("cls");										// Comando para limpar a tela
+		for ( laco = 1 ; laco = 1 ;)								// for: para repetição do menu: inicio
+	
+			{																		
+	
+			system ("cls");									// Comando para limpar a tela
+		
+			setlocale (LC_ALL, "Portuguese");						// Seleção de linguagem
+	
+			printf ("###  Cartório da EBAC  ###\n\n");					// Apresentação
+			printf ("Escolha a opção desejada do menu: \n\n");				// Início do menu
+			printf ("\t1 - Registrar nomes\n");						// 	Menu: Registrar nomes
+			printf ("\t2 - Consultar nomes\n");						// 	Menu: Consulta nomes
+			printf ("\t3 - Deletar nomes\n\n");						// 	Menu: Deletar nomes
+			printf ("\t4 - Sair do sistema\n\n");						//	Menu: Sair do sistema
+			printf ("Opção: \n\n");								// Fim do menu
+
+			scanf ("%d", &opcao);								// Armazenamendo a escolha
+	
+			system ("cls");									// Comando para limpar a tela
+
+
+			switch (opcao)									// switch: Inicio da seleção
+		
+				{
 				
-			case 1:										// Chamada de função: Registro
-			registro();															
-			break;
+				case 1:									// Chamada de função: Registro
+				registro();															
+				break;
 			
-			case 2:										// Chamada de função: Consulta
-			consulta();
-			break;
+				case 2:									// Chamada de função: Consulta
+				consulta();
+				break;
 			
-			case 3:										// Chamada de função: Deletar
-			deletar();
-			break;
+				case 3:									// Chamada de função: Deletar
+				deletar();
+				break;
 
-			case 4:										// Chamada de função: Sair do sistema
-			printf ("Obrigado por utilizar o sistema!\n");
-			return 0;
-			break;
+				case 4:									// Chamada de função: Sair do sistema
+				printf ("Obrigado por utilizar o sistema!\n");
+				return 0;
+				break;
 			
-			default:									// Chamada de função: Erro
-			printf ("Essa opção não está disponivel!\n");
-			system ("pause");
-			break;
+				default:								// Chamada de função: Erro
+				printf ("Essa opção não está disponivel!\n");
+				system ("pause");
+				break;
 			
-			}
+				}
 													// switch: Fim da Seleção
-		}											// for: para repetição do menu: fim
+			}										// for: para repetição do menu: fim
+		}											// if: confirmação de senha: fim
+	
+	else												// else: erro na confirmação de senha
+		printf("Senha incorreta!");								// Mensagem de erro
 		
 	}												// FUNÇÃO PRINCIPAL: FIM
